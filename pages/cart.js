@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Sidebar from "../components/global/sidebar";
 
 function cart() {
   return (
-    <div>cart</div>
-  )
+    <div >
+      <Sidebar />
+    </div>
+  );
 }
 
-export default cart
+export default cart;
