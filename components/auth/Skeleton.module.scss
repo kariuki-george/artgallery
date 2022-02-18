@@ -1,0 +1,26 @@
+.skeleton {
+  min-width: 700px;
+  border: 1px solid black;
+  border-radius: 5px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  max-height: 95vh;
+  overflow-y: auto;
+
+  align-items: center;
+  .skeleton_top {
+    border-bottom: 1px solid black;
+    width: 100%;
+    padding: 10px;
+    font-size: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .skeleton_top_info {
+      font-size: 15px;
+    }
+  }
+}

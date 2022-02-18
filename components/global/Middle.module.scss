@@ -1,0 +1,15 @@
+.middle {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  span {
+    margin-top: 5px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  span:hover {
+    font-size: 25px;
+  }
+}
