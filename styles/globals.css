@@ -16,6 +16,7 @@ a {
   margin: 0;
   padding: 0;
   font-size: 25px;
+  font-weight: 300;
 }
 
 html::-webkit-scrollbar {

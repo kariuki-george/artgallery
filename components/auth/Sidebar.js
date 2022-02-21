@@ -4,21 +4,17 @@ import { useDispatch } from "react-redux";
 import { switchUser } from "../../state/slices/userSlice";
 
 function Sidebar() {
-  //ignore these functions for now...your scope ni kustyle tu
   const dispatch = useDispatch();
   const handleSwitch = (user) => {
     dispatch(switchUser(user));
   };
+
   return (
     <div className={styles.sidebar}>
-      {/* <button onClick={clickMe}>Buyer</button>
-      <button onClick={clickMe}>Designer</button>
-      <button onClick={clickMe}>Admin</button> */}
       <button
         onClick={() => {
           handleSwitch("buyer");
         }}
-        className={styles.sidebar_role}
       >
         Buyer
       </button>
@@ -26,7 +22,6 @@ function Sidebar() {
         onClick={() => {
           handleSwitch("designer");
         }}
-        className={styles.sidebar_role}
       >
         Designer
       </button>
@@ -34,7 +29,6 @@ function Sidebar() {
         onClick={() => {
           handleSwitch("admin");
         }}
-        className={styles.sidebar_role}
       >
         Admin
       </button>

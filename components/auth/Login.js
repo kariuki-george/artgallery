@@ -5,6 +5,7 @@ import styles from "./Register.module.scss";
 
 function Login() {
   const handleLogin = () => {};
+
   return (
     <div className={styles.register}>
       <Skeleton>
