@@ -1,0 +1,36 @@
+.product {
+  width: 100%;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .product_container {
+    display: flex;
+    justify-content: space-around;
+
+    img {
+      height: 80vh;
+      object-fit: cover;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      width: 500px;
+
+      span {
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+        font-weight: lighter;
+
+        h1 {
+          font-size: 30px;
+          font-weight: bolder;
+        }
+      }
+    }
+  }
+}

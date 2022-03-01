@@ -3,11 +3,12 @@ import Link from "next/link";
 import Skeleton from "./Skeleton";
 import styles from "./Register.module.scss";
 
+
 function Register() {
   const handleLogin = () => {};
   return (
     <div className={styles.register}>
-      <Skeleton>
+      <Skeleton authState={"sign up"}>
         <form>
           <label>name</label>
           <input

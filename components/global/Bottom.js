@@ -1,9 +1,19 @@
-import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styles from "./Bottom.module.scss";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { logout } from "../../state/slices/userSlice";
+import toast from "react-hot-toast";
 
 function Bottom() {
-  const [auth, setAuth] = useState(true);
+  const user = useSelector((state) => state.users);
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const handleAuth = () => {
+    if (!user.isLoggedIn) return router.push("/auth/login");
+    dispatch(logout());
+    return toast.success("Logged out successfully");
+  };
   return (
     <div className={styles.bottom}>
       <Link href="/">
@@ -16,9 +26,10 @@ function Bottom() {
         <span>privacy</span>
       </Link>
       {/* checks if is auth */}
-      <Link href="/auth/login">
-        <span>{auth ? "sign in " : "sign out"}</span>
-      </Link>
+
+      <span onClick={handleAuth}>
+        {user.isLoggedIn ? "sign out " : "sign in"}
+      </span>
     </div>
   );
 }

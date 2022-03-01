@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import styles from "./Top.module.scss";
+import { useSelector } from "react-redux";
 
 function Top() {
-  const [auth, setAuth] = useState(true);
+  const user = useSelector((state) => state.users);
+
   return (
     <div className={styles.top}>
-      {!auth && <div>Art Gallery</div>}
+      {!user.isLoggedIn && <div>Art Gallery</div>}
 
       {/* {auth && (
         <div className={styles.top_auth}>
@@ -19,19 +21,20 @@ function Top() {
           </div>
         </div>
       )} */}
-      {auth && (
+      {user.isLoggedIn && (
         <div className={styles.top_auth}>
           <h1>Art Gallery</h1>
           <div className={styles.top_hero}>
             <img
               className={styles.top_cat_icon}
+              alt="hero image"
               src="https://www.prestigeanimalhospital.com/sites/default/files/interesting-cat-facts.jpg"
             />
             <div>
               <p className={styles.top_cat_hi}>
-                Hi <span>Gab</span>
+                Hi <span>{user.user.name.split(user.user.name[3])[0]}</span>
               </p>
-              <p>user</p>
+              <p>{user.user.role}</p>
             </div>
           </div>
         </div>

@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Middle.module.scss";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 function Middle() {
+  const user = useSelector((state) => state.users.user);
+
   return (
     <div className={styles.middle}>
       <Link href="/">
@@ -13,7 +16,7 @@ function Middle() {
         <span>cart</span>
       </Link>
       {/* designer specific routes */}
-      {
+      {user.role === "designer" && (
         <>
           <Link href="/designer/create">
             <span>create</span>
@@ -22,9 +25,9 @@ function Middle() {
             <span>notifications</span>
           </Link>
         </>
-      }
+      )}
       {/* admin specific routes */}
-      {false && (
+      {user.role === "admin" && (
         <>
           <Link href="/admin/products">
             <span>products</span>

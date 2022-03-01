@@ -1,0 +1,26 @@
+.cartbutton {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  border: 1px solid black;
+  border-radius: 10px;
+
+  span {
+    width: 100%;
+
+    padding: 10px;
+    text-align: center;
+  }
+  .cartbutton_cart {
+    border: 1px solid black;
+    border-top: 0px;
+    border-bottom: 0px;
+  }
+  .cartbutton_cart:hover {
+    border: 1px solid black;
+    cursor: pointer;
+    border-top: 0px;
+    border-bottom: 0px;
+    font-weight: bolder;
+  }
+}
