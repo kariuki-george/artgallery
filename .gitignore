@@ -34,3 +34,7 @@ yarn-error.log*
 .vercel
 
 README2.md
+
+
+
+package-lock.json

@@ -65,6 +65,7 @@ function Art() {
       {list.map((art) => {
         return (
           <Artwork
+            key={art.id}
             id={art.id}
             imageurl={art.imageurl}
             designer={art.designer}
