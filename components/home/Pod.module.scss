@@ -13,19 +13,24 @@
     object-fit: cover;
   }
   div {
+    display: none;
+  }
+}
+
+.pod:hover {
+  cursor: pointer;
+
+  div {
+    display: flex;
     position: absolute;
     bottom: 0;
 
     background-image: linear-gradient(to top, whitesmoke, transparent);
     width: 100%;
     padding: 4px;
-    display: flex;
+
     justify-content: flex-end;
     height: 60px;
     align-items: flex-end;
   }
-}
-
-.pod:hover {
-  cursor: pointer;
 }

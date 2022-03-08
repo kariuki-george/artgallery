@@ -1,6 +1,6 @@
 .artwork {
-  min-width: 320px;
-  min-height: 500px;
+  min-width: 300px;
+  height: 400px;
   margin: 10px;
   margin-bottom: 2px;
   position: relative;
@@ -11,19 +11,23 @@
     object-fit: cover;
   }
   div {
+    display: none;
+  }
+}
+
+.artwork:hover {
+  cursor: pointer;
+  div {
+    display: flex;
     position: absolute;
     bottom: 0;
 
     background-image: linear-gradient(to top, whitesmoke, transparent);
     width: 100%;
     padding: 4px;
-    display: flex;
+
     justify-content: flex-end;
     height: 60px;
     align-items: flex-end;
   }
-}
-
-.artwork:hover {
-  cursor: pointer;
 }
