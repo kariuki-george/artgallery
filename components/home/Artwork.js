@@ -11,7 +11,7 @@ function Artwork({ id, imageurl, designer }) {
         router.push(`/product/${parseInt(id)}`);
       }}
     >
-      <img src={imageurl} />
+      <img src={imageurl} alt={designer} />
       <div>@ {designer}</div>
     </div>
   );

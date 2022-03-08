@@ -14,7 +14,7 @@ function ProductOfTheDay() {
         router.push(`/product/${parseInt("10000")}`);
       }}
     >
-      <img src={imageurl} />
+      <img src={imageurl}  alt="product of the day"/>
       <div>@ {designer}</div>
     </div>
   );
