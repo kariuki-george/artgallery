@@ -66,10 +66,7 @@ function Art() {
         return (
           <Artwork
             id={art.id}
-           
-            
             imageurl={art.imageurl}
-           
             designer={art.designer}
           />
         );

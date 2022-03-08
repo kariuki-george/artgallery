@@ -1,5 +1,31 @@
 .pod {
   width: 100%;
   min-height: 500px;
-  background-color: yellow;
+  min-width: 320px;
+  min-height: 500px;
+  margin: 10px;
+  margin-bottom: 2px;
+  position: relative;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  div {
+    position: absolute;
+    bottom: 0;
+
+    background-image: linear-gradient(to top, whitesmoke, transparent);
+    width: 100%;
+    padding: 4px;
+    display: flex;
+    justify-content: flex-end;
+    height: 60px;
+    align-items: flex-end;
+  }
+}
+
+.pod:hover {
+  cursor: pointer;
 }

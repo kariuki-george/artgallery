@@ -1,62 +1,106 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import styles from "./Upload.module.scss";
 
 function Upload() {
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState(0);
+  const [desc, setDesc] = useState("");
+  const [category, setCategory] = useState("");
+  const [img, setImg] = useState("");
+  const [url, setUrl] = useState("");
+  const [img_Url, setImg_Url] = useState("");
+
+  const uploadImage = async (img) => {
+    try {
+      const data = new FormData();
+      data.append("file", img);
+      data.append("upload_preset", "smiley");
+      data.append("cloud_name", "smiley-geek");
+
+      const response = await Axios.post(
+        process.env.REACT_APP_CLOUDINARY_URL,
+        data
+      );
+
+      return response.data.secure_url;
+    } catch (error) {
+      return "error";
+    }
+  };
+
+  const handleCreate = async (e) => {
+    e.preventDefault();
+    if (!(name && url && price && desc)) {
+      toast.error("Ensure required fields are filled");
+    }
+
+    //const res = await uploadImage(img);
+
+    img_Url ? setUrl(img_Url) : setUrl(res);
+    img_Url ? setUrl(img_Url) : setUrl(res);
+
+    if (url === "error") {
+      return toast.error("Check your network or the image file");
+    }
+  };
   return (
-    <div className="">
-      upload
-      {/* <form>
-        <label htmlFor="">Username</label>
+    <div className={styles.upload}>
+      <form>
+        <label htmlFor="">Name</label>
         <input
           type="text"
-          //value={newName}
+          value={name}
           onChange={(e) => {
-            //setUpdate(true);
-            //setNewName(e.target.value);
+            setName(e.target.value);
           }}
         />
-        <label htmlFor="">Email</label>
-        <input
-          type="email"
-          //value={newEmail}
-          onChange={(e) => {
-            //setUpdate(true);
-            //setNewEmail(e.target.value);
-          }}
-        />
-        <label htmlFor="">Image or Image Url</label>
-        <input
-          type="file"
-          onChange={(e) => {
-            //setUpdate(true);
-            //setCloud_img_url(e.target.value);
-          }}
-        />
+        <label htmlFor="">
+          Paste image link below or choose an image from your computer{" "}
+          <i>preferrably in portrait</i>
+        </label>
         <input
           type="url"
-          //value={newImg_url}
+          name=""
+          id=""
           onChange={(e) => {
-            //setNewImg_url(e.target.value);
-            //setUpdate(true);
+            setImg_Url(e.target.value);
+          }}
+          value={img_Url}
+          placeholder="image url(optional)"
+        />
+        <label>or</label>
+        <input
+          type="file"
+          src=""
+          alt=""
+          onChange={(e) => {
+            setImg(e.target.files[0]);
           }}
         />
-        <label htmlFor="">Address</label>
+        <label htmlFor="">description</label>
+        <textarea
+          value={desc}
+          onChange={(e) => {
+            setDesc(e.target.value);
+          }}
+        />
+        <label htmlFor="">Category</label>
         <input
           type="text"
-          //value={newCounty}
           onChange={(e) => {
-            //setUpdate(true);
-            //setNewCounty(e.target.value);
+            setCategory(e.target.value);
           }}
         />
+        <label htmlFor="">Price</label>
         <input
-          type="text"
-          //value={newArea}
+          type="number"
           onChange={(e) => {
-            //setUpdate(true);
-            //setNewArea(e.target.value);
+            setPrice(e.target.value);
           }}
         />
-      </form> */}
+        <button onClick={handleCreate}>create</button>
+      </form>
     </div>
   );
 }
