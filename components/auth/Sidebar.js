@@ -25,13 +25,7 @@ function Sidebar() {
       >
         Designer
       </button>
-      <button
-        onClick={() => {
-          handleSwitch("admin");
-        }}
-      >
-        Admin
-      </button>
+     
     </div>
   );
 }

@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-// let userData = JSON.parse(localStorage.getItem("user"));
-// let cart = JSON.parse(localStorage.getItem("cart"));
 
-const userData = false;
+
 
 const initialState = {
   isLoggedIn: false,
