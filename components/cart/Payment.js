@@ -1,37 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import MiniSkeleton from "./MiniSkeleton";
+import toast from "react-hot-toast";
 import styles from "./Payment.module.scss";
+import { nextStage } from "../../state/slices/checkoutFlow";
 
 function Payment() {
+  const { user } = useSelector((state) => state.users);
+  const { total } = useSelector((state) => state.checkout);
+  const [addr, setAddr] = useState("");
+  const dispatch = useDispatch();
+
+  const handlePayment = (e) => {
+    e.preventDefault();
+    if (addr == "") {
+      return toast.error("Please choose a pickup point");
+    }
+    const order = {
+      total,
+      phonenumber: user.phonenumber,
+      buyerId: user.id,
+      email: user.email,
+      pickup: addr,
+    };
+    console.log(order);
+    dispatch(nextStage());
+  };
   return (
     <MiniSkeleton heading="Payment">
       <form className={styles.payment}>
         <input
           type="email"
-          placeholder="kariukigeorge2030@gmail.com"
           disabled
-          //   value={name}
+          value={user.email}
           //   onChange={(e) => {
           //     setName(e.target.value);
           //   }}
         />
         <input
           type="text"
-          placeholder="0748440468"
           disabled
-          //   value={name}
+          value={"+254" + user.phonenumber}
           //   onChange={(e) => {
           //     setName(e.target.value);
           //   }}
         />
-        <input type="number" placeholder="67809" disabled />
-        <select>
+        <input type="number" placeholder={total} disabled />
+        <select
+          onChange={(e) => {
+            setAddr(e.target.value);
+          }}
+        >
           <option>Choose a pickup point</option>
           <option>jkuat</option>
           <option>ku</option>
           <option>uon</option>
         </select>
-        <button>pay now</button>
+        <button onClick={handlePayment}>pay now</button>
       </form>
     </MiniSkeleton>
   );

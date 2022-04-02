@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./Upload.module.scss";
 import toast from "react-hot-toast";
+import {useSelector} from "react-redux"
 
-function Upload({ handleUpload }) {
+function Upload({ handleUpload, isLoading }) {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [desc, setDesc] = useState("");
@@ -11,6 +12,7 @@ function Upload({ handleUpload }) {
   // const [img, setImg] = useState("");
   // const [url, setUrl] = useState("");
   const [img_Url, setImg_Url] = useState("");
+  const {user}  = useSelector(state=>state.users)
 
   // const uploadImage = async (img) => {
   //   try {
@@ -33,22 +35,20 @@ function Upload({ handleUpload }) {
   const handleCreate = async (e) => {
     e.preventDefault();
     if (!(name && price)) {
-      toast.error("Ensure required fields are filled");
+      return toast.error("Ensure required fields are filled");
     }
-    
+
     const product = {
       name,
       price,
       description: desc,
-      designer: 11,
+      designer_id: user.id,
+      designer_name:user.name,
       category,
       imageurl: img_Url,
     };
-    const response = await axios.post(
-      "https://api.smiley-geek-codes.tech/api/products",
-      product
-    );
-    console.log(response);
+
+    handleUpload(product);
   };
   return (
     <div className={styles.upload}>
@@ -111,7 +111,9 @@ function Upload({ handleUpload }) {
             setPrice(e.target.value);
           }}
         />
-        <button onClick={handleCreate}>create</button>
+        <button disabled={isLoading} onClick={handleCreate}>
+          {isLoading ? "uploading" : "create"}
+        </button>
       </form>
     </div>
   );

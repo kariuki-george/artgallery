@@ -12,6 +12,7 @@ function Bottom() {
   const handleAuth = () => {
     if (!user.isLoggedIn) return router.push("/auth/login");
     dispatch(logout());
+    window.localStorage.removeItem("user");
     return toast.success("Logged out successfully");
   };
   return (

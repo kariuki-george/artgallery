@@ -6,7 +6,7 @@ const userData = false;
 
 const initialState = {
   productOfTheDay: {},
-  products: [{}],
+  products: [],
 };
 
 export const productsSlice = createSlice({
@@ -14,6 +14,6 @@ export const productsSlice = createSlice({
   initialState: initialState,
 });
 
-//export const {} = productsSlice.actions;
+//export const {addProducts} = productsSlice.actions;
 const product = productsSlice.reducer;
 export default product;

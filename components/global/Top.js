@@ -21,9 +21,9 @@ function Top() {
             />
             <div>
               <p className={styles.top_cat_hi}>
-                Hi <span>{   user.user.name.split(" ")[0]}</span>
+                Hi <span>{   user.user?.name.split(" ")[0]}</span>
               </p>
-              <p>{user.user.role}</p>
+              <p>{user.user?.role}</p>
             </div>
           </div>
         </div>

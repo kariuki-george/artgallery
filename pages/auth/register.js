@@ -4,7 +4,7 @@ import Register from "../../components/auth/Register";
 import styles from "../../styles/Pages.module.css";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { login } from "../../state/slices/userSlice";
+import { loginUser } from "../../state/slices/userSlice";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 
@@ -19,7 +19,7 @@ function register() {
       );
 
       localStorage.setItem("user", JSON.stringify(response.data));
-      dispatch(login(response.data));
+      dispatch(loginUser(response.data));
       toast.success("Account created successfully");
 
       if (router.query.redirect) {

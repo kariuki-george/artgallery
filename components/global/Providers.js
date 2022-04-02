@@ -4,7 +4,8 @@ import { Provider } from "react-redux";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
-import { login } from "../../state/slices/userSlice";
+import { loginUser } from "../../state/slices/userSlice";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 const queryClient = new QueryClient();
 
@@ -16,7 +17,7 @@ function Providers({ children }) {
       <Auth>
         <QueryClientProvider client={queryClient}>
           <Toaster />
-          {children}{" "}
+          {children} <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </Auth>
     </Provider>
@@ -27,9 +28,13 @@ function Auth({ children }) {
   const dispatch = useDispatch();
   useEffect(() => {
     const user = JSON.parse(window.localStorage.getItem("user"));
-    user && dispatch(login(user));
+    user && dispatch(loginUser(user));
   }, []);
-  return <>{children}</>;
+  return (
+    <>
+    {children} 
+    </>
+  );
 }
 
 export default Providers;

@@ -3,13 +3,15 @@ import styles from "./PaymentFlow.module.scss";
 import Cart from "./Cart";
 import Payment from "./Payment";
 import Processing from "./Processing";
+import { useSelector } from "react-redux";
 
-function PaymentFlow() {
+function PaymentFlow({ data }) {
+  const { stage } = useSelector((state) => state.checkout);
   return (
     <div className={styles.paymentflow}>
-      <Cart />
-      <Payment  />
-      <Processing />
+      {stage <3 && <Cart data={data} />}
+      {stage == 3 && <Payment />}
+      {stage == 4 && <Processing />}
     </div>
   );
 }

@@ -6,6 +6,57 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+body {
+  animation-name: backgroundColorPalette;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation-fill-mode: both;
+  backdrop-filter: blur(6px);
+}
+
+
+@keyframes backgroundColorPalette {
+  0% {
+    background: linear-gradient(
+      0.25turn,
+      #ffffff3d,
+      #e6b3a341,
+      #eed3a236,
+      #f8f6943b
+    );
+  }
+  25% {
+    background: linear-gradient(
+      0.25turn,
+      #e6bca33b,
+      #eee9a233,
+      #daf8942f,
+      #ffffff33
+    );
+  }
+
+  50% {
+    background: linear-gradient(
+      0.25turn,
+      #a8eea242,
+      #c4f89434,
+      #ffffff2f,
+      #e6dfa341
+    );
+  }
+  100% {
+    background: linear-gradient(
+      0.25turn,
+      #f8cd9448,
+      #ffffff3f,
+      #eebbbb54,
+      #ecb0ac3d
+    );
+  }
+}
+
 a {
   color: inherit;
   text-decoration: none;

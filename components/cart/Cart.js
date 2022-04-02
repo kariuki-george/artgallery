@@ -1,19 +1,28 @@
 import React from "react";
 import MiniSkeleton from "./MiniSkeleton";
 import styles from "./Cart.module.scss";
+import { useDispatch } from "react-redux";
+import { addToCheckout } from "../../state/slices/checkoutFlow";
 
-function Cart() {
+function Cart({ data }) {
+  const dispatch = useDispatch();
+  const handleCheckout = (item) => {
+    dispatch(addToCheckout(item));
+  };
+
   return (
     <MiniSkeleton heading={"Your Cart"}>
-      <li className={styles.cart}>
-        <img
-          src="https://images.unsplash.com/photo-1635176592349-17312164d148?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDh8eEh4WVRNSExnT2N8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
-          alt="art image"
-        />
-<div>    <span>shs: 487</span>
-        <button>buy</button></div>
-    
-      </li>
+      {data.length === 0 && <li className={styles.cart}>Your cart is empty</li>}
+
+      {data.map((item) => (
+        <li key={item.id} className={styles.cart}>
+          <img src={item.imageurl} alt="art image" />
+          <div>
+            <span>shs: {item.price}</span>
+            <button onClick={() => handleCheckout(item)}>buy</button>
+          </div>
+        </li>
+      ))}
     </MiniSkeleton>
   );
 }

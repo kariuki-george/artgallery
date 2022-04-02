@@ -4,12 +4,12 @@ import Art from "./Art";
 import styles from "./Products.module.scss";
 import Search from "./Search";
 
-function Products() {
+function Products({ products, isFetching }) {
   return (
     <div className={styles.products}>
       <Search />
       <ProductOfTheDay />
-      <Art />
+      {!isFetching && <Art products={products} />}
     </div>
   );
 }

@@ -1,45 +1,63 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Checkout.module.scss";
+import { useSelector, useDispatch } from "react-redux";
+import { nextStage, prevStage } from "../../state/slices/checkoutFlow";
 
 function Checkout() {
+  const { stage, checkoutList } = useSelector((state) => state.checkout);
+  const [total, setTotal] = React.useState(0);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const sum = checkoutList.reduce((prev, item) => prev + item.price, 0);
+    setTotal(sum);
+  }, [checkoutList]);
+
+  const handleCheckout = () => {
+    dispatch(nextStage(total));
+  };
+  const handleBack = ()=>{
+    dispatch(prevStage());
+  }
+
   return (
     <div className={styles.checkout}>
       <div className={styles.checkout_flow}>
-        <span>1</span>
-        <span>2</span>
-        <span>3</span>
-        <span>4</span>
+        {[1, 2, 3, 4].map((number) => (
+          <span
+            key={number}
+            style={
+              stage == number
+                ? { color: "black" }
+                : {
+                    color: "gray",
+                    fontSize: "smaller",
+                    display: "flex",
+                    alignItems: "center",
+                  }
+            }
+          >
+            {number}
+          </span>
+        ))}
       </div>
       <div>your orders</div>
       <div className={styles.checkout_list}>
-        <li>
-          <img
-            src="https://images.unsplash.com/photo-1635176592349-17312164d148?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDh8eEh4WVRNSExnT2N8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
-            alt="art image"
-          />
+        {checkoutList.length === 0 && <span>click buy to checkout</span>}
+        {console.log("render")}
+        {checkoutList.map((item) => (
+          <li key={item.id}>
+            
+            <img src={item.imageurl} alt="art image" />
 
-          <span>shs: 487</span>
-        </li>
-        <li>
-          <img
-            src="https://images.unsplash.com/photo-1635176592349-17312164d148?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDh8eEh4WVRNSExnT2N8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
-            alt="art image"
-          />
-
-          <span>shs: 020387</span>
-        </li>
-        <li>
-          <img
-            src="https://images.unsplash.com/photo-1635176592349-17312164d148?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDh8eEh4WVRNSExnT2N8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
-            alt="art image"
-          />
-
-          <span>shs: 0987</span>
-        </li>
+            <span>shs: {item.price}</span>
+          </li>
+        ))}
       </div>
       <div className={styles.checkout_checkout}>
-        <span>Total: 94939</span>
-        <button>checkout</button>
+        <span>Total: {total}</span>
+        
+        {stage < 4 && <button onClick={handleCheckout}>checkout</button>}
+       { stage == 3 && <button onClick={handleBack}>go back</button>}
       </div>
     </div>
   );
