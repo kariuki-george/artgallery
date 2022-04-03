@@ -13,11 +13,11 @@ function Checkout() {
   }, [checkoutList]);
 
   const handleCheckout = () => {
-    dispatch(nextStage(total));
+    dispatch(nextStage(total + 75));
   };
-  const handleBack = ()=>{
+  const handleBack = () => {
     dispatch(prevStage());
-  }
+  };
 
   return (
     <div className={styles.checkout}>
@@ -43,10 +43,9 @@ function Checkout() {
       <div>your orders</div>
       <div className={styles.checkout_list}>
         {checkoutList.length === 0 && <span>click buy to checkout</span>}
-        {console.log("render")}
+        
         {checkoutList.map((item) => (
           <li key={item.id}>
-            
             <img src={item.imageurl} alt="art image" />
 
             <span>shs: {item.price}</span>
@@ -54,10 +53,13 @@ function Checkout() {
         ))}
       </div>
       <div className={styles.checkout_checkout}>
-        <span>Total: {total}</span>
-        
+        <span>Sub Total: {total}</span>
+        {total != 0 && <span>Service Fee: {75}</span>}
+
+        {total != 0 && <span>Total: {total + 75}</span>}
+
         {stage < 4 && <button onClick={handleCheckout}>checkout</button>}
-       { stage == 3 && <button onClick={handleBack}>go back</button>}
+        {stage == 3 && <button onClick={handleBack}>go back</button>}
       </div>
     </div>
   );

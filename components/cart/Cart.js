@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import MiniSkeleton from "./MiniSkeleton";
 import styles from "./Cart.module.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCheckout } from "../../state/slices/checkoutFlow";
 
 function Cart({ data }) {
   const dispatch = useDispatch();
+  const { checkoutList } = useSelector((state) => state.checkout);
+
   const handleCheckout = (item) => {
-    dispatch(addToCheckout(item));
+    let present = [];
+    present = checkoutList.filter((product) => {
+      if (product.id == item.id) {
+        return product;
+      }
+    });
+
+    present.length == 0 && dispatch(addToCheckout(item));
   };
 
   return (

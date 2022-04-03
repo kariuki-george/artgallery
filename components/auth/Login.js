@@ -49,7 +49,7 @@ function Login({ handleLogin }) {
           <button onClick={handleSubmit}>login</button>
         </form>
         <h4>
-          Don't have an account? <span onClick={handleRegister}>Register</span>
+          Don`&apos;`t have an account? <span onClick={handleRegister}>Register</span>
         </h4>
       </Skeleton>
     </div>

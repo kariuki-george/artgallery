@@ -73,7 +73,7 @@ function Register({handleRegister}) {
         <h4>
           Already a member?{" "}
           {
-            <Link href="/auth/login">
+            <Link href="/auth/login" passHref >
               <span>Login</span>
             </Link>
           }

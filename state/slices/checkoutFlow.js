@@ -10,6 +10,7 @@ const checkoutSlice = createSlice({
   reducers: {
     addToCheckout: (state, { payload }) => {
       state.stage = 2;
+      
       state.checkoutList.push(payload);
     },
     nextStage: (state, { payload }) => {

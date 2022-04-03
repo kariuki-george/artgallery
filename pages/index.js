@@ -25,10 +25,9 @@ export default function Home() {
     isSuccess,
     isFetching,
   } = useQuery("products", getProducts, {
-    cacheTime: 5 * 60 * 1000,
+    cacheTime: 60 * 1000,
     refetchOnWindowFocus: false,
   });
-  
 
   status.success && toast.success("success");
   isError && toast.success("Error: Check your network");

@@ -5,8 +5,9 @@ import Upload from "../../components/designer/Upload";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useMutation } from "react-query";
+import Head from "next/head"
 
-function create() {
+function Create() {
   const mutation = useMutation((product) => {
     const response = axios.post(
       "https://api.smiley-geek-codes.tech/api/products",
@@ -20,6 +21,9 @@ function create() {
 
   return (
     <div className={styles.page}>
+      <Head>
+    <title>create</title>
+  </Head>
       <Sidebar />
       {mutation.isError && toast.error("Sorry an error occurred")}
       {mutation.isSuccess && toast.success("successfully created")}
@@ -28,4 +32,4 @@ function create() {
   );
 }
 
-export default create;
+export default Create;

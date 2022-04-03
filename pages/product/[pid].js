@@ -6,14 +6,10 @@ import styles from "../../styles/Pages.module.css";
 import { useQuery } from "react-query";
 import toast from "react-hot-toast";
 import axios from "axios";
+import Head from "next/head";
 
-function product() {
-
-
-
+function ProductPage() {
   const router = useRouter();
-
-  
 
   const getProduct = async () => {
     const res = await axios.get(
@@ -44,6 +40,9 @@ function product() {
   isSuccess && console.log("data", data);
   return (
     <div className={styles.page}>
+      <Head>
+        <title>product</title>
+      </Head>
       <Sidebar />
       {isFetching && "loading"}
       {isSuccess && <Product isFetching={isFetching} product={data} />}
@@ -51,4 +50,4 @@ function product() {
   );
 }
 
-export default product;
+export default ProductPage;

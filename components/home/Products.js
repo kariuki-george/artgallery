@@ -8,8 +8,9 @@ function Products({ products, isFetching }) {
   return (
     <div className={styles.products}>
       <Search />
-      <ProductOfTheDay />
+      {/* <ProductOfTheDay /> */}
       {!isFetching && <Art products={products} />}
+      {isFetching && "loading"}
     </div>
   );
 }

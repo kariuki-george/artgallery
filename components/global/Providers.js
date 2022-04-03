@@ -6,6 +6,7 @@ import { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../state/slices/userSlice";
 import { ReactQueryDevtools } from "react-query/devtools";
+import Head from "next/head";
 
 const queryClient = new QueryClient();
 
@@ -17,7 +18,7 @@ function Providers({ children }) {
       <Auth>
         <QueryClientProvider client={queryClient}>
           <Toaster />
-          {children} <ReactQueryDevtools initialIsOpen={false} />
+          {children}
         </QueryClientProvider>
       </Auth>
     </Provider>
@@ -32,7 +33,11 @@ function Auth({ children }) {
   }, []);
   return (
     <>
-    {children} 
+      <Head>
+        <title>Art Gallery</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      {children}
     </>
   );
 }

@@ -7,8 +7,9 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 import { loginUser } from "../../state/slices/userSlice";
 import { useDispatch } from "react-redux";
+import Head from "next/head"
 
-function login() {
+function LoginPage() {
   const router = useRouter();
   const dispatch = useDispatch();
   const handleLogin = async (user) => {
@@ -38,10 +39,11 @@ function login() {
   };
   return (
     <div className={styles.page}>
+      <Head><title>login</title></Head>
       <Sidebar />
       <Login handleLogin={handleLogin} />
     </div>
   );
 }
 
-export default login;
+export default LoginPage;

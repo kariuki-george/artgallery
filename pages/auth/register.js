@@ -7,8 +7,9 @@ import { useRouter } from "next/router";
 import { loginUser } from "../../state/slices/userSlice";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
+import Head from "next/head"
 
-function register() {
+function RegisterPage() {
   const router = useRouter();
   const dispatch = useDispatch();
   const handleSubmit = async (user) => {
@@ -33,10 +34,11 @@ function register() {
 
   return (
     <div className={styles.page}>
+       <Head><title>register</title></Head>
       <Sidebar />
       <Register handleRegister={handleSubmit} />
     </div>
   );
 }
 
-export default register;
+export default RegisterPage;

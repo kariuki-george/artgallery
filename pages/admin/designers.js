@@ -1,9 +1,9 @@
 import React from 'react'
 
-function designers() {
+function Designers() {
   return (
     <div>designers</div>
   )
 }
 
-export default designers
+export default Designers

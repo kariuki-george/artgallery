@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./Upload.module.scss";
 import toast from "react-hot-toast";
-import {useSelector} from "react-redux"
+import { useSelector } from "react-redux";
 
 function Upload({ handleUpload, isLoading }) {
   const [name, setName] = useState("");
@@ -12,7 +12,7 @@ function Upload({ handleUpload, isLoading }) {
   // const [img, setImg] = useState("");
   // const [url, setUrl] = useState("");
   const [img_Url, setImg_Url] = useState("");
-  const {user}  = useSelector(state=>state.users)
+  const { user } = useSelector((state) => state.users);
 
   // const uploadImage = async (img) => {
   //   try {
@@ -43,12 +43,17 @@ function Upload({ handleUpload, isLoading }) {
       price,
       description: desc,
       designer_id: user.id,
-      designer_name:user.name,
+      designer_name: user.name,
       category,
       imageurl: img_Url,
     };
 
     handleUpload(product);
+    setName("");
+    setPrice(0);
+    setDesc("");
+    setCategory("");
+    setImg_Url("");
   };
   return (
     <div className={styles.upload}>
@@ -66,7 +71,7 @@ function Upload({ handleUpload, isLoading }) {
         </label>
         <label>
           Get the url{" "}
-          <a href="https://myimagemyupload.netlify.app/" target="_blank">
+          <a rel="noreferrer" href="https://myimagemyupload.netlify.app/" target="_blank">
             here
           </a>
         </label>

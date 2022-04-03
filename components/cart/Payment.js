@@ -4,12 +4,23 @@ import MiniSkeleton from "./MiniSkeleton";
 import toast from "react-hot-toast";
 import styles from "./Payment.module.scss";
 import { nextStage } from "../../state/slices/checkoutFlow";
+import axios from "axios";
+import { useMutation } from "react-query";
 
 function Payment() {
   const { user } = useSelector((state) => state.users);
-  const { total } = useSelector((state) => state.checkout);
+  const { total, checkoutList } = useSelector((state) => state.checkout);
+
   const [addr, setAddr] = useState("");
   const dispatch = useDispatch();
+
+  const mutation = useMutation((product) => {
+    const response = axios.post(
+      "https://api.smiley-geek-codes.tech/api/pay",
+      product
+    );
+    return response.data;
+  });
 
   const handlePayment = (e) => {
     e.preventDefault();
@@ -17,15 +28,18 @@ function Payment() {
       return toast.error("Please choose a pickup point");
     }
     const order = {
-      total,
-      phonenumber: user.phonenumber,
+      Amount: total,
+      PhoneNumber: "254" + user.phonenumber,
       buyerId: user.id,
       email: user.email,
-      pickup: addr,
+      pickupPoint: addr,
+      checkoutList,
     };
-    console.log(order);
+
+    mutation.mutate(order);
     dispatch(nextStage());
   };
+
   return (
     <MiniSkeleton heading="Payment">
       <form className={styles.payment}>
@@ -56,7 +70,9 @@ function Payment() {
           <option>ku</option>
           <option>uon</option>
         </select>
-        <button onClick={handlePayment}>pay now</button>
+        <button disabled={mutation.isLoading} onClick={handlePayment}>
+          pay now
+        </button>
       </form>
     </MiniSkeleton>
   );

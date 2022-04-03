@@ -18,20 +18,18 @@ function Middle() {
 
     return res.data;
   };
-  const { data} = useQuery("cart", getCart, {
-    cacheTime: 10 * 1000,
-    refetchOnWindowFocus: false,
+  const { data } = useQuery("cart", getCart, {
+    cacheTime: 20 * 1000,
   });
-
 
   return (
     <div className={styles.middle}>
-      <Link href="/">
+      <Link passHref href="/">
         <span>home</span>
       </Link>
 
       {
-        <Link href="/cart">
+        <Link passHref href="/cart">
           <span>
             cart{" "}
             <span
@@ -53,10 +51,10 @@ function Middle() {
       {/* designer specific routes */}
       {user.role === "designer" && (
         <>
-          <Link href="/designer/create">
+          <Link passHref href="/designer/create">
             <span>create</span>
           </Link>
-          <Link href="/designer/notifications">
+          <Link passHref href="/designer/notifications">
             <span>notifications</span>
           </Link>
         </>
@@ -64,10 +62,10 @@ function Middle() {
       {/* admin specific routes*/}
       {user.role === "admin" && (
         <>
-          <Link href="/admin/products">
+          <Link passHref href="/admin/products">
             <span>products</span>
           </Link>
-          <Link href="/admin/designers">
+          <Link passHref href="/admin/designers">
             <span>designers</span>
           </Link>
         </>

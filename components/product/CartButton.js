@@ -6,7 +6,6 @@ import { useMutation } from "react-query";
 import styles from "./CartButton.module.scss";
 import axios from "axios";
 
-
 function CartButton({ product, price, designer_name }) {
   const { isLoggedIn, user } = useSelector((state) => state.users);
 
@@ -17,7 +16,6 @@ function CartButton({ product, price, designer_name }) {
       "https://api.smiley-geek-codes.tech/api/cart",
       data
     );
-    console.log(response.data)
     return response.data;
   });
 
@@ -25,19 +23,17 @@ function CartButton({ product, price, designer_name }) {
     if (!isLoggedIn) {
       return router.push(`/auth/login?redirect=true&location=${router.asPath}`);
     }
-    console.log(data);
 
     mutation.mutate(data);
   };
 
   return (
     <div className={styles.cartbutton}>
-      {mutation.isSuccess && toast.success("Added successfully")}
       <span>Ksh: {price}</span>
       <span
         className={styles.cartbutton_cart}
         onClick={() => {
-          handleAddToCart({ ...product, user_id: user.id });
+          handleAddToCart({ ...product, user_id: user.id , product_id:product.id});
         }}
       >
         Add to cart

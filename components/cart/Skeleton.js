@@ -5,9 +5,8 @@ import styles from "./Skeleton.module.scss";
 import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import { useQuery } from "react-query";
-import axios from "axios"
+import axios from "axios";
 function Skeleton() {
-  
   const { user } = useSelector((state) => state.users);
   const getCart = async () => {
     if (!user.id) {
@@ -21,6 +20,7 @@ function Skeleton() {
     return res.data;
   };
   const { data, isError, isLoading } = useQuery("cart", getCart, {
+    refetchOnMount: true,
     refetchOnWindowFocus: false,
   });
 
@@ -32,7 +32,7 @@ function Skeleton() {
   }
   return (
     <div className={styles.skeleton}>
-      <PaymentFlow data={data}/>
+      <PaymentFlow data={data} />
       {data.length != 0 && <Checkout />}
     </div>
   );
