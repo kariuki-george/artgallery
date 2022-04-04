@@ -5,7 +5,7 @@ function Help() {
     <div className={styles.page}>
       <Sidebar></Sidebar>
       <div style={{ color: "gray", padding: "10px" }}>
-        For any assistance including deleting an account, call -
+        For any assistance, call -
         +254112100378
       </div>
     </div>
