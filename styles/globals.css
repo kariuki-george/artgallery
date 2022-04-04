@@ -7,17 +7,23 @@ body {
 }
 
 body {
-  animation-name: backgroundColorPalette;
+  background: linear-gradient(
+    to left,
+    #ffffff3d,
+    #e6b3a341,
+    #eed3a236,
+    #f8f6943b
+  );
+  /* animation-name: backgroundColorPalette;
   animation-duration: 10s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   animation-fill-mode: both;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px); */
 }
 
-
-@keyframes backgroundColorPalette {
+/* @keyframes backgroundColorPalette {
   0% {
     background: linear-gradient(
       0.25turn,
@@ -55,7 +61,7 @@ body {
       #ecb0ac3d
     );
   }
-}
+} */
 
 a {
   color: inherit;

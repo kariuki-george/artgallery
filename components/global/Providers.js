@@ -36,6 +36,11 @@ function Auth({ children }) {
       <Head>
         <title>Art Gallery</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link
+          rel="icon"
+          type="image/png"
+          href="https://images.unsplash.com/photo-1456086272160-b28b0645b729?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fGFydHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=60&q=60"
+        ></link>
       </Head>
       {children}
     </>

@@ -17,13 +17,13 @@ function Bottom() {
   };
   return (
     <div className={styles.bottom}>
-      <Link passHref href="/">
+      <Link passHref href="/help">
         <span>help</span>
       </Link>
-      <Link passHref href="/">
+      <Link passHref href="/about">
         <span>about</span>
       </Link>
-      <Link passHref href="/">
+      <Link passHref href="/privacy">
         <span>privacy</span>
       </Link>
       {/* checks if is auth */}

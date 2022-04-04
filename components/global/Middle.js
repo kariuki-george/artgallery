@@ -54,9 +54,9 @@ function Middle() {
           <Link passHref href="/designer/create">
             <span>create</span>
           </Link>
-          <Link passHref href="/designer/notifications">
+          {/* <Link passHref href="/designer/notifications">
             <span>notifications</span>
-          </Link>
+          </Link> */}
         </>
       )}
       {/* admin specific routes*/}
