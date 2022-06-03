@@ -39,3 +39,5 @@ workflows:
           filters:
             branches:
               only: apiGateway # only deploy when on main
+          post-steps:
+            - run: yarn start:prod
