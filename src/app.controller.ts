@@ -35,7 +35,10 @@ export class AppController {
   }
   @Get('/cart/:id')
   async getCartByUserId(@Param('id') id) {
-
     return await this.service.getCartByUserId(id);
+  }
+  @Get()
+  getHello() {
+    return 'Hello World!';
   }
 }
