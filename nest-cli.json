@@ -1,4 +1,30 @@
 {
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src"
+  "sourceRoot": "apps/learn/src",
+  "monorepo": true,
+  "root": "apps/learn",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/learn/tsconfig.app.json"
+  },
+  "projects": {
+    "learn": {
+      "type": "application",
+      "root": "apps/learn",
+      "entryFile": "main",
+      "sourceRoot": "apps/learn/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/learn/tsconfig.app.json"
+      }
+    },
+    ".": {
+      "type": "application",
+      "root": "apps",
+      "entryFile": "main",
+      "sourceRoot": "apps/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/tsconfig.app.json"
+      }
+    }
+  }
 }

@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { AppService } from './app.service';
 
-@Controller('/api')
+@Controller()
 export class AppController {
   constructor(private service: AppService) {}
   @Get('/users')
@@ -19,6 +19,7 @@ export class AppController {
 
   @Get('/products')
   async getProducts() {
+   
     return await this.service.getProducts();
   }
   @Get('/products/:id')
