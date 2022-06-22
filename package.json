@@ -2,11 +2,10 @@
   "name": "artgallery",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-   
+     "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "dev": "turbo run dev"   
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.2",
